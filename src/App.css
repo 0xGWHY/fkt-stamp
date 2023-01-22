@@ -147,6 +147,7 @@ font-family: 'Noto Sans KR', sans-serif; */
   background-color: black;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
+  overflow: hidden;
 }
 .App::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera*/

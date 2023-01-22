@@ -76,17 +76,21 @@ function App() {
 
   const makePaint = (e) => {
     const colorNumber = Math.floor(Math.random() * 10, 0);
-    const size = Math.round(Math.random() * 25 + 5, 0);
+
+    const size = window.outerWidth >= 800 ? Math.round(Math.random() * 25 + 5, 0) : Math.round(Math.random() * 12 + 4, 0);
     setPaint([...paint, { x: e.clientX, y: e.clientY, color: colors[colorNumber], size: size }]);
   };
-  console.log(paint);
   return (
     <div className="App">
       <button onClick={() => setPaint([])}>clear</button>
       <Background onClick={(e) => makePaint(e)} onMouseMove={(e) => cursorControl(e)}>
-        <CursorImage positionX={positionX} positionY={positionY}>
-          <img src={fktImage} alt="fkt-logo"></img>
-        </CursorImage>
+        {window.outerWidth >= 800 ? (
+          <CursorImage positionX={positionX} positionY={positionY}>
+            <img src={fktImage} alt="fkt-logo"></img>
+          </CursorImage>
+        ) : (
+          ""
+        )}
         {paint.map((map, idx) => {
           return (
             <PaintImage key={idx} x={map.x} y={map.y} color={map.color} size={map.size}>
